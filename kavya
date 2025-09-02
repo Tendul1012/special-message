@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positivity for Kavya Shree 😇</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #title {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    color: #4d004d;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  #container {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    z-index: 1;
+  }
+
+  #tapButton {
+    width: 100%;
+    max-width: 250px;
+    background: rgba(77,0,77,0.2);
+    border: 1px solid #4d004d;
+    padding: 14px;
+    border-radius: 25px;
+    color: #4d004d;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #tapButton:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 15px rgba(77,0,77,0.6);
+  }
+
+  .pulse {
+    animation: pulse 0.8s ease;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  #message {
+    margin-top: 30px;
+    min-height: 90px;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    line-height: 1.6;
+    word-wrap: break-word;
+  }
+
+  #subMessage {
+    margin-top: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #4d004d;
+    font-size: 16px;
+    transition: opacity 0.5s ease;
+  }
+
+  .msg-style1 { font-family: 'Inter', sans-serif; color: #330033; font-size: 18px; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+  .msg-style2 { font-family: 'Roboto', sans-serif; color: #660066; font-size: 19px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+  .msg-style3 { font-family: 'Montserrat', sans-serif; color: #4d004d; font-size: 20px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+
+  .particle, .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(77,0,77,0.7);
+    border-radius: 50%;
+    animation: floatUp 4s linear forwards;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg);}
+    100% { transform: translateY(-250px) rotate(360deg); opacity: 0;}
+  }
+
+  .sparkle {
+    width: 8px;
+    height: 8px;
+    background: rgba(77,0,77,0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(77,0,77,0.7);
+    animation: floatUp 5s linear forwards;
+  }
+
+</style>
+</head>
+<body>
+
+<div id="title">🌸 A Special Message for Kavya Shree 🌸</div>
+
+<div id="container">
+  <div id="tapButton">Tap for Positivity 😇</div>
+  <div id="subMessage">A special message for my confused friend 😇</div>
+  <div id="message"></div>
+</div>
+
+<script>
+const messages = [
+  {text: "Kavya Shree, your happiness is your responsibility 😌", style: "msg-style1"},
+  {text: "Keep your smile shining bright, no matter what ✨", style: "msg-style2"},
+  {text: "Every challenge is a chance to grow, Kavya Shree 🌱", style: "msg-style3"},
+  {text: "People may come and go, but your peace is yours 💖", style: "msg-style1"},
+  {text: "Take a deep breath, relax, and recharge tonight 🌙", style: "msg-style2"},
+  {text: "Small steps every day lead to big victories 💫", style: "msg-style3"},
+  {text: "Your energy and positivity make a difference, Kavya Shree 😇", style: "msg-style1"}
+];
+
+let currentIndex = 0;
+let tappedOnce = false;
+
+const tapButton = document.getElementById('tapButton');
+const messageDiv = document.getElementById('message');
+const subMessageDiv = document.getElementById('subMessage');
+
+tapButton.addEventListener('click', () => {
+  // Pulse animation
+  tapButton.classList.remove('pulse'); 
+  void tapButton.offsetWidth; 
+  tapButton.classList.add('pulse');
+
+  // Update subMessage after first tap
+  if(!tappedOnce){
+    subMessageDiv.style.opacity = 0;
+    setTimeout(() => {
+      subMessageDiv.textContent = "Tap again for your next message, Kavya Shree!";
+      subMessageDiv.style.opacity = 1;
+    }, 200);
+    tappedOnce = true;
+  }
+
+  // Show current message
+  const msgObj = messages[currentIndex];
+  messageDiv.style.opacity = 0;
+  messageDiv.style.transform = "translateY(-10px)";
+  
+  setTimeout(() => {
+    // Check if we finished all messages
+    if(currentIndex >= messages.length){
+      messageDiv.textContent = "Good Night, Kavya Shree 😇… Hope you have a better sleep tonight 🌙✨";
+      messageDiv.className = "msg-style2";
+    } else {
+      messageDiv.textContent = msgObj.text;
+      messageDiv.className = msgObj.style;
+    }
+    messageDiv.style.opacity = 1;
+    messageDiv.style.transform = "translateY(0)";
+  }, 300);
+
+  currentIndex++;
+  // Stop going beyond messages, so last tap shows Good Night
+  if(currentIndex > messages.length) currentIndex = messages.length;
+
+  // Sparkle effect
+  const sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  sparkle.style.left = Math.random() * window.innerWidth + 'px';
+  sparkle.style.bottom = '0px';
+  document.body.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 5000);
+});
+
+// Background floating particles
+setInterval(() => {
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+  particle.style.left = Math.random() * window.innerWidth + 'px';
+  particle.style.bottom = '0px';
+  particle.style.background = ['#4d004d', '#660066', '#330033'][Math.floor(Math.random()*3)];
+  document.body.appendChild(particle);
+  setTimeout(() => particle.remove(), 4000);
+}, 400);
+
+</script>
+
+</body>
+</html>
